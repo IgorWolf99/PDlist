@@ -2,6 +2,7 @@ package com.igorwolf.pdlist.entities;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,13 +19,26 @@ public class Product implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id;
 	
+	@Column(nullable = false, unique = true, length = 30)
 	private String nome;
+	@Column(nullable = false)
 	private Integer quantidade;
+	@Column(nullable = false)
 	private Double	valor;
+	@Column(nullable= false, columnDefinition = "TEXT")
+	private String descricao;
 	
 	
+	public Product() {}
 	
-	
+	public Product(Long id, String nome, Integer quantidade, Double valor) {
+		Id = id;
+		this.nome = nome;
+		this.quantidade = quantidade;
+		this.valor = valor;
+	}
+
+
 	public Long getId() {
 		return Id;
 	}
@@ -49,7 +63,13 @@ public class Product implements Serializable{
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
-	
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 	
 	
 }
