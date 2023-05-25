@@ -38,7 +38,6 @@ public class Product implements Serializable{
 		this.valor = valor;
 	}
 
-
 	public Long getId() {
 		return Id;
 	}
