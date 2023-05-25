@@ -36,10 +36,14 @@ public class ProductController {
 	
 	@PostMapping
 	public ResponseEntity<Object> save(@RequestBody Product product) {
-		Product productSave = productService.save(product);
-		String message = "Produto: " +  productSave.getNome() + " adicionado com sucesso.";
-		return ResponseEntity.status(HttpStatus.OK).body(message);
-	}
+		if (productService.existsNameProductIgnoringSpaces(product.getNome())) {
+	        return ResponseEntity.status(HttpStatus.CONFLICT).body("Erro. Produto já está cadastrado.");
+	    }
+		    
+		    Product productSave = productService.save(product);
+		    String message = "Produto: " + productSave.getNome() + " adicionado com sucesso.";
+		    return ResponseEntity.status(HttpStatus.OK).body(message);
+		}
 	
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Object> delete(@PathVariable Long id){

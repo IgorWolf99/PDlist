@@ -34,5 +34,23 @@ public class ProductService {
 	public void delete(Product product) {
 		productRepository.delete(product);
 	}
+
+	public boolean existsNameProductIgnoringSpaces(String name) {
+	    List<Product> products = productRepository.findAll();
+
+	    for (Product product : products) {
+	        String existingName = product.getNome().replaceAll("\\s+", "");
+	        String newName = name.replaceAll("\\s+", "");
+
+	        if (existingName.equalsIgnoreCase(newName)) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
 	
+	public boolean existsNameProduct(String nameProduct) {
+		return productRepository.existsByNome(nameProduct);
+	}
+
 }

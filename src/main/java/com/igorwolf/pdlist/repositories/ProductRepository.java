@@ -11,4 +11,6 @@ import com.igorwolf.pdlist.entities.Product;
 public interface ProductRepository extends JpaRepository<Product, Long>{
 	
 	public Optional<Product> findById(Long id);
+	public boolean existsByNome(String nomeProduct);
+	
 }
