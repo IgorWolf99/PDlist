@@ -11,6 +11,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+
 @Entity
 @Table(name = "tb_product")
 public class Product implements Serializable{
@@ -24,6 +25,7 @@ public class Product implements Serializable{
 	@Column(unique = true, length = 30)
 	@NotBlank
 	private String nome;
+
 	@NotNull
 	private Integer quantidade;
 	@NotNull
