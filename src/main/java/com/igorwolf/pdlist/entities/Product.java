@@ -8,6 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tb_product")
@@ -19,13 +21,16 @@ public class Product implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id;
 	
-	@Column(nullable = false, unique = true, length = 30)
+	@Column(unique = true, length = 30)
+	@NotBlank
 	private String nome;
-	@Column(nullable = false)
+	@NotNull
 	private Integer quantidade;
-	@Column(nullable = false)
+	@NotNull
 	private Double	valor;
-	@Column(nullable= false, columnDefinition = "TEXT")
+	
+	@Column(columnDefinition = "TEXT")
+	@NotBlank
 	private String descricao;
 	
 	
