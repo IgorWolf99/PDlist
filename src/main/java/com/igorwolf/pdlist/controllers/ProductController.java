@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.igorwolf.pdlist.entities.Product;
 import com.igorwolf.pdlist.services.ProductService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/products")
 public class ProductController {
@@ -36,10 +38,13 @@ public class ProductController {
 	
 	@PostMapping
 	public ResponseEntity<Object> save(@RequestBody Product product) {
+		if (product.getNome().trim().isEmpty() || product.getDescricao().trim().isEmpty()) {
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro. Um dos campos está vazio.");
+		}
 		if (productService.existsNameProductIgnoringSpaces(product.getNome())) {
 	        return ResponseEntity.status(HttpStatus.CONFLICT).body("Erro. Produto já está cadastrado.");
 	    }
-		    
+		
 		    Product productSave = productService.save(product);
 		    String message = "Produto: " + productSave.getNome() + " adicionado com sucesso.";
 		    return ResponseEntity.status(HttpStatus.OK).body(message);
