@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.igorwolf.pdlist.entities.Product;
 import com.igorwolf.pdlist.repositories.ProductRepository;
 
+
 @Service
 public class ProductService {
 	
@@ -27,7 +28,7 @@ public class ProductService {
 	
 	@Transactional
 	public Product save(Product product) {
-		return productRepository.save(product);
+        return productRepository.save(product);
 	}
 	
 	@Transactional

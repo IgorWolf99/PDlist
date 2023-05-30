@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.igorwolf.pdlist.entities.Product;
 import com.igorwolf.pdlist.services.ProductService;
 
-import jakarta.validation.Valid;
-
 @RestController
 @RequestMapping(value = "/products")
 public class ProductController {
