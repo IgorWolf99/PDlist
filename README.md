@@ -16,4 +16,4 @@ Espero que ache interessante!
 
 
 Postman para verificar os Endpoints.
-![image](https://github.com/IgorWolf99/PDlist/assets/116234237/7782f735-af47-434c-b7a9-2ef748493ebf)
+![image](https://github.com/IgorWolf99/PDlist/assets/116234237/2993247d-9aff-49e9-a6ca-d7888f3f992e)
