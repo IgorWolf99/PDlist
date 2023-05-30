@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.igorwolf.pdlist.ProductProjection;
 import com.igorwolf.pdlist.entities.Product;
 import com.igorwolf.pdlist.repositories.ProductRepository;
 
@@ -52,6 +53,11 @@ public class ProductService {
 	
 	public boolean existsNameProduct(String nameProduct) {
 		return productRepository.existsByNome(nameProduct);
+	}
+	
+	public List<Product> findByList(Long listId){
+		List<ProductProjection> result = productRepository.searchByList(listId);
+		return result.stream().map(x -> new Product(x)).toList();
 	}
 
 }

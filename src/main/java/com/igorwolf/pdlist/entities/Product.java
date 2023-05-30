@@ -2,6 +2,8 @@ package com.igorwolf.pdlist.entities;
 
 import java.io.Serializable;
 
+import com.igorwolf.pdlist.ProductProjection;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -51,7 +53,18 @@ public class Product implements Serializable{
 		this.valor = valor;
 		this.category = categoria;
 	}
-
+	
+	//Construtor Projection
+	public Product(ProductProjection projection) {
+		this.id = projection.getId();
+		this.nome = projection.getNome();
+		this.quantidade = projection.getQuantidade();
+		this.valor = projection.getValor();
+		this.descricao = projection.getDescricao();
+		this.category = projection.getCategory();
+	}
+	
+	
 	public Long getId() {
 		return id;
 	}
