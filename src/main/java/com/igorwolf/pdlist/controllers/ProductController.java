@@ -30,8 +30,12 @@ public class ProductController {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public Optional<Product> findById(@PathVariable Long id) {
-		return productService.findById(id);
+	public ResponseEntity<Object> findById(@PathVariable Long id) {
+		Optional<Product> productOptional = productService.findById(id);
+		if(!productOptional.isPresent()){
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto não encontrado.");
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(productOptional.get());
 	}
 	
 	@PostMapping
